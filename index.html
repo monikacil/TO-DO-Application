@@ -7,6 +7,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="todolist not-done">
+                <h1>Todos</h1>
+                <button id="addButton" class="btn mark">New todo</button>
+                <!--zmienić na add todo-->
+                <form action="">
+                    <input type="text" class="add-todo" placeholder="Task name">
+                    <input type="text" class="add-todo" placeholder="Description">
+                    <input type="text" class="add-todo" placeholder="Priority">
+                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00">
+                </form>
+                <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleFormControlSelect1" class="sortType">Sorting type</label>
+                    <select class="form-control sortTypeOptions" id="exampleFormControlSelect1">
+                        <option>-------</option>
+                        <option>Priority</option>
+                        <option>Done</option>
+                        <option>To do</option>
+                    </select>
+                </div>
+                    <button id="deleteButton" class="btn mark col-md-6">Delete marked</button>
+                </div>
+                <div class="todos">
+                    <ul id="sortable" class="list-unstyled">
+                        <li class="ui-state-default">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value=""/>Learn CSS</label>
+                                <div class="todoInfo">
+                                    <p>Make 5000 projects in 10 days</p>
+                                    <p class="valueName">priority&nbsp;<span class="priorityValue">4</span></p>
+                                    <p class="valueName">date&nbsp;<span class="dateValue">03.10.2020</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <hr>
+                        <li class="ui-state-default">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value=""/>Make TODO list</label>
+                                <div class="todoInfo">
+                                    <p>Be pro and do something boring</p>
+                                    <p class="valueName">priority&nbsp;<span class="priorityValue">1</span></p>
+                                    <p class="valueName">date&nbsp;<span class="dateValue">03.10.2018</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <hr>
+                        <li class="ui-state-default">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value=""/>Be a master of JS</label>
+                                <div class="todoInfo">
+                                    <p>Most important, learn React and Angular</p>
+                                    <p class="valueName">priority&nbsp;<span class="priorityValue">5</span></p>
+                                    <p class="valueName">date&nbsp;<span class="dateValue">03.02.2018</span></p>
+                                </div>
 
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

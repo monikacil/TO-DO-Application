@@ -4,6 +4,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 
+
 /*SASS to CSS*/
 gulp.task('sass', function() {
     return gulp.src('scss/main.scss') //określenie ścieżki do pliku scss

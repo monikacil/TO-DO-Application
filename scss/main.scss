@@ -1,0 +1,152 @@
+@import "libs";
+@import "colors";
+
+@mixin shadow {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.39);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.39);
+}
+
+body {
+  background-color: white;
+  font-size: 62.5%; /* 10px */
+  width: 100%;
+  height: 100vh;
+}
+
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+  align-items: center;
+  justify-content: center
+}
+
+hr{
+  border: 0;
+  height: 1px;
+  background: $primary-color ;
+  margin: 2rem 0;
+}
+
+
+
+.col-md-12 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .todolist {
+    width: 30vw;
+    margin: 10vh 0;
+    background-color: #323232;
+    padding: 2rem 2rem 1rem 2rem;
+    @include shadow;
+    border-top: 0.3rem solid $primary-color;
+    h1 {
+      margin: 0;
+      padding-bottom: 1.5rem;
+      text-align: left;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      color: $primary-color;
+    }
+    input.add-todo, .form-control {
+      color: white;
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      margin: 1rem 0;
+      background-color: $gray-lighter-two;
+      font-size: 1rem;
+      font-family: Sans-serif;
+      outline: 0;
+      border-radius: 0;
+      border: 0;
+      &::placeholder {
+        color: $gray-lighter-one;
+      }
+      &:active, &:focus {
+        background-color: $gray-lighter-one;
+        outline: 0.1rem solid $primary-color;
+        color: white;
+        border: none;
+        box-shadow: none;
+      }
+    }
+
+    .btn.mark {
+      letter-spacing: 0.05rem;
+      background-position: 0 -50%;
+      background-repeat: repeat-x;
+      transition: background-position .75s ease;
+      color: $primary-color-text;
+      background-image: url('https://s32.postimg.org/ku0i5xmph/wave_yellow.png');
+      background-color: white;
+      border-radius: 0;
+      padding: 1rem;
+      width: 100%;
+      text-transform: uppercase;
+      box-shadow: none;
+      &:hover {
+        background-position: 100% 60%;
+      }
+    }
+
+    .row {
+      margin-top: 2rem;
+      .form-group {
+        padding-left: 0;
+        .sortType {
+          font-weight: bold;
+          color: $primary-color;
+          font-size: 1rem;
+          letter-spacing: 0.05rem;
+          margin-bottom: -1rem;
+          margin-top: 1rem;
+        }
+        select {
+          border-radius: 0;
+          &:active, &:focus {
+            outline: 0.1rem solid $primary-color;
+            box-shadow: none;
+          }
+          option {
+            color: $primary-color-text;
+          }
+        }
+      }
+    }
+
+    .todos {
+      margin-top: 2rem;
+      color: white;
+      font-size: 1rem;
+      letter-spacing: 0.05rem;
+      .todoInfo {
+        padding-left: 1.8rem;
+        p, span.priorityValue, span.dateValue {
+          font-size: 0.8rem;
+          margin-top: -0.5rem;
+          color: white;
+        }
+        p.valueName {
+          font-size: 0.8rem;
+          margin-top: -0.5rem;
+          color: $primary-color;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+      }
+      input[type=checkbox] {
+        margin-right: 1rem;
+      }
+    }
+
+  }
+}
+
+
+
+
+
