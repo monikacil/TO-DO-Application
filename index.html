@@ -11,34 +11,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="todolist not-done">
+            <div class="todolist">
                 <h1>Todos</h1>
-                <button id="addButton" class="btn mark">New todo</button>
+                <button id="addButton" class="btn mark" data-title="New todo"></button>
                 <!--zmienic na add todo-->
-                <form action="">
-                    <input type="text" class="add-todo" placeholder="Task name">
-                    <input type="text" class="add-todo" placeholder="Description">
+                <form action="" id="formTodo">
+                    <input type="text" class="add-todo" placeholder="Task name" id="taskName">
+                    <input type="text" class="add-todo" placeholder="Description" id="description">
                     <select class="form-control priority" id="priority">
+                        <option>priority</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
                     </select>
-                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00">
+                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="date">
                 </form>
-                <div class="row">
-                <div class="form-group col-md-6">
-                    <label for="exampleFormControlSelect1" class="sortType">Sorting type</label>
-                    <select class="form-control sortTypeOptions" id="exampleFormControlSelect1">
-                        <option>-------</option>
-                        <option>Priority</option>
-                        <option>Done</option>
-                        <option>To do</option>
-                    </select>
-                </div>
-                    <button id="deleteButton" class="btn mark col-md-6">Delete marked</button>
-                </div>
                 <div class="todos">
                     <ul id="sortable" class="list-unstyled">
                         <li class="ui-state-default">
@@ -46,7 +35,7 @@
                                 <label><input type="checkbox" value=""/>Learn CSS</label>
                                 <div class="todoInfo">
                                     <p>Make 5000 projects in 10 days</p>
-                                    <p class="valueName">priority&nbsp;<span class="priorityValue">4</span></p>
+                                    <p class="valueName">priority&nbsp;<span class="priorityValue">3</span></p>
                                     <p class="valueName">date&nbsp;<span class="dateValue">03.10.2020</span></p>
                                 </div>
                             </div>
@@ -58,7 +47,7 @@
                                     <input type="checkbox" value=""/>Make TODO list</label>
                                 <div class="todoInfo">
                                     <p>Be pro and do something boring</p>
-                                    <p class="valueName">priority&nbsp;<span class="priorityValue">1</span></p>
+                                    <p class="valueName">priority&nbsp;<span class="priorityValue">5</span></p>
                                     <p class="valueName">date&nbsp;<span class="dateValue">03.10.2018</span></p>
                                 </div>
                             </div>
@@ -70,12 +59,24 @@
                                     <input type="checkbox" value=""/>Be a master of JS</label>
                                 <div class="todoInfo">
                                     <p>Most important, learn React and Angular</p>
-                                    <p class="valueName">priority&nbsp;<span class="priorityValue">5</span></p>
+                                    <p class="valueName">priority&nbsp;<span class="priorityValue">1</span></p>
                                     <p class="valueName">date&nbsp;<span class="dateValue">03.02.2018</span></p>
                                 </div>
                             </div>
                         </li>
                     </ul>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleFormControlSelect1" class="sortType">Sorting type</label>
+                            <select class="form-control sortTypeOptions" id="exampleFormControlSelect1">
+                                <option>-------</option>
+                                <option>Priority</option>
+                                <option>Done</option>
+                                <option>To do</option>
+                            </select>
+                        </div>
+                        <button id="deleteButton" class="btn mark col-md-6">Delete marked</button>
+                    </div>
                 </div>
             </div>
         </div>
