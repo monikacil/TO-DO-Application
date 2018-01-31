@@ -79,6 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
             var newLabel = create("label", "");
             var newCheckbox = create("input");
             newCheckbox.setAttribute("type", "checkbox");
+            if (tasks[i].done)
+                newCheckbox.checked = "checked";
             var todoInfoBox = create("div", "todoInfo");
             var descriptionBox = create("p", "", tasks[i].description);
             var priorityValueName = create("p", "valueName", "priority ");
@@ -100,6 +102,13 @@ document.addEventListener('DOMContentLoaded', function () {
             priorityValueName.appendChild(priorityValue);
             todoInfoBox.appendChild(dateValueName);
             dateValueName.appendChild(dateValue);
+
+            const j = i;
+            newCheckbox.addEventListener("change", function() {
+                tasks[j].done = this.checked;
+                console.log(this.checked);
+            });
+            console.log(tasks);
         }
     }
 
