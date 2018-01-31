@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var priority = document.getElementById("priority");
     var form = document.getElementById("formTodo");
     var sortTypeOptions = document.querySelector("#exampleFormControlSelect1");
-    console.log(sortTypeOptions);
     var tasks = [];
     var id = 1;
 
@@ -138,9 +137,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function sortByDeadlineDate(){
         tasks.sort(function (a, b){
-            var c = new Date(a.date);
-            var d = new Date(b.date);
-            return c-d;
+            var firstDate = new Date(a.date);
+            var secondDate = new Date(b.date);
+            return firstDate - secondDate;
         })
     }
 
