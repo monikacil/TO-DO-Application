@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var priority = document.getElementById("priority");
     var form = document.getElementById("formTodo");
     var sortTypeOptions = document.querySelector("#select1");
+    var filterOptions = document.querySelector("#select2");
     var tasks = [];
     var id = 1;
 
@@ -75,31 +76,43 @@ document.addEventListener('DOMContentLoaded', function () {
     function showTask() {
         clearList();
         for(var i = 0; i < tasks.length; i++) {
-            var newLi = create("li", "ui-state-default");
-            var newLabel = create("label", "");
-            var newCheckbox = create("input");
-            newCheckbox.setAttribute("type", "checkbox");
-            var todoInfoBox = create("div", "todoInfo");
-            var descriptionBox = create("p", "", tasks[i].description);
-            var priorityValueName = create("p", "valueName", "priority ");
-            var dateValueName = create("p", "valueName", "date ");
-            var priorityValue = create("span", "priorityValue", tasks[i].priority);
-            var dateValue = create("span", "dateValue", tasks[i].date);
-            var hrElement = create("hr");
+            //CHECK VALUE OF filterOptions AND TASK STATE THEN DECIDE WHETHER TO SHOW IT OR NOT
+            if(filterOptions.value === "all" ||
+                    (filterOptions.value === "todo" && tasks[i].done === false) ||
+                    (filterOptions.value === "done" && tasks[i].done === true)) {
+                var newLi = create("li", "ui-state-default");
+                var newLabel = create("label", "");
+                var newCheckbox = create("input");
+                newCheckbox.setAttribute("type", "checkbox");
+                if (tasks[i].done)
+                    newCheckbox.checked = "checked";
+                var todoInfoBox = create("div", "todoInfo");
+                var descriptionBox = create("p", "", tasks[i].description);
+                var priorityValueName = create("p", "valueName", "priority ");
+                var dateValueName = create("p", "valueName", "date ");
+                var priorityValue = create("span", "priorityValue", tasks[i].priority);
+                var dateValue = create("span", "dateValue", tasks[i].date);
+                var hrElement = create("hr");
 
-            var listTodos = document.getElementById("listTodos");
-            listTodos.appendChild(hrElement);
-            listTodos.appendChild(newLi);
-            newLi.appendChild(newLabel);
-            newLabel.appendChild(newCheckbox);
-            var titleText = document.createTextNode(tasks[i].title);
-            newLi.appendChild(titleText);
-            newLi.appendChild(todoInfoBox);
-            todoInfoBox.appendChild(descriptionBox);
-            todoInfoBox.appendChild(priorityValueName);
-            priorityValueName.appendChild(priorityValue);
-            todoInfoBox.appendChild(dateValueName);
-            dateValueName.appendChild(dateValue);
+                var listTodos = document.getElementById("listTodos");
+                listTodos.appendChild(hrElement);
+                listTodos.appendChild(newLi);
+                newLi.appendChild(newLabel);
+                newLabel.appendChild(newCheckbox);
+                var titleText = document.createTextNode(tasks[i].title);
+                newLi.appendChild(titleText);
+                newLi.appendChild(todoInfoBox);
+                todoInfoBox.appendChild(descriptionBox);
+                todoInfoBox.appendChild(priorityValueName);
+                priorityValueName.appendChild(priorityValue);
+                todoInfoBox.appendChild(dateValueName);
+                dateValueName.appendChild(dateValue);
+
+                const j = i;
+                newCheckbox.addEventListener("change", function () {
+                    tasks[j].done = this.checked;
+                });
+            }
         }
     }
 
@@ -147,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
     hideForm();
     addButton.innerText = addButton.dataset.title;
 
-    //E V E N T
+    //E V E N T S
     addButton.addEventListener("click", function () {
         form.hidden = !form.hidden;
         if (!form.hidden) {
@@ -167,6 +180,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     sortTypeOptions.addEventListener("change", function(event){
         sortTasks(event.target.value);
+        showTask();
+    });
+
+    filterOptions.addEventListener("change", function(){
         showTask();
     });
 });
