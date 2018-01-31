@@ -91,17 +91,17 @@ hr{
       }
     }
 
-    .row {
-      margin-top: 2rem;
+    .row.titles{
+      margin-top: 1.5rem;
+      margin-bottom: -2rem;
       .form-group {
-        padding-left: 0;
         .sortType {
           font-weight: bold;
           color: $primary-color;
           font-size: 1rem;
           letter-spacing: 0.05rem;
-          margin-bottom: -1rem;
           margin-top: 1rem;
+          text-align: left;
         }
         select {
           border-radius: 0;
