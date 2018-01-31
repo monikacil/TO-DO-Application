@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var priorityOptions = document.querySelectorAll("select#priority option");
     var priority = document.getElementById("priority");
     var form = document.getElementById("formTodo");
-    var sortTypeOptions = document.querySelector("#exampleFormControlSelect1");
+    var sortTypeOptions = document.querySelector("#select1");
     var tasks = [];
     var id = 1;
 
