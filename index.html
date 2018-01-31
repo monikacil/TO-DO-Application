@@ -30,7 +30,7 @@
                 </form>
                 <div class="todos">
                     <ul id="listTodos" class="list-unstyled">
-                        <li class="ui-state-default">
+                        <!--<li class="ui-state-default">
                                 <label><input type="checkbox" value=""/>Learn CSS</label>
                                 <div class="todoInfo">
                                     <p>Make 5000 projects in 10 days</p>
@@ -57,16 +57,17 @@
                                     <p class="valueName">priority&nbsp;<span class="priorityValue">1</span></p>
                                     <p class="valueName">date&nbsp;<span class="dateValue">03.02.2018</span></p>
                                 </div>
-                        </li>
+                        </li>-->
                     </ul>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1" class="sortType">Sorting type</label>
                             <select class="form-control sortTypeOptions" id="exampleFormControlSelect1">
-                                <option>-------</option>
-                                <option>Priority</option>
-                                <option>Done</option>
-                                <option>To do</option>
+                                <option value="id">-------</option>
+                                <option value="priority">Priority</option>
+                                <option value="done">Done</option>
+                                <option value="todo">To do</option>
+                                <option value="deadline">Deadline</option>
                             </select>
                         </div>
                         <button id="deleteButton" class="btn mark col-md-6">Delete marked</button>
