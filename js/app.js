@@ -77,17 +77,19 @@ document.addEventListener('DOMContentLoaded', function () {
     //2 RECREATE NEW HTML STRUCTURE BASED ON tasks ARRAY
     function showTask() {
         clearList();
-        for(var i = 0; i < tasks.length; i++) {
+        for (var i = 0; i < tasks.length; i++) {
             //CHECK VALUE OF filterOptions AND TASK STATE THEN DECIDE WHETHER TO SHOW IT OR NOT
-            if(filterOptions.value === "all" ||
-                    (filterOptions.value === "todo" && tasks[i].done === false) ||
-                    (filterOptions.value === "done" && tasks[i].done === true)) {
+            if (filterOptions.value === "all" ||
+                (filterOptions.value === "todo" && tasks[i].done === false) ||
+                (filterOptions.value === "done" && tasks[i].done === true)) {
                 var newLi = create("li", "ui-state-default");
                 var newLabel = create("label", "");
-                var newCheckbox = create("input");
+                var newCheckbox = create("input", "checkbox");
                 newCheckbox.setAttribute("type", "checkbox");
                 if (tasks[i].done)
                     newCheckbox.checked = "checked";
+                var deleteBtnSmall = create("button", "btn mark deleteBtnSmall");
+                deleteBtnSmall.innerText = "delete";
                 var todoInfoBox = create("div", "todoInfo");
                 var descriptionBox = create("p", "", tasks[i].description);
                 var priorityValueName = create("p", "valueName", "priority ");
@@ -102,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 listTodos.appendChild(newLi);
                 newLi.appendChild(newLabel);
                 newLabel.appendChild(newCheckbox);
+                newLabel.appendChild(deleteBtnSmall);
                 var titleText = document.createTextNode(tasks[i].title);
                 newLi.appendChild(titleText);
                 newLi.appendChild(todoInfoBox);
@@ -114,10 +117,42 @@ document.addEventListener('DOMContentLoaded', function () {
                 const j = i;
                 newCheckbox.addEventListener("change", function () {
                     tasks[j].done = this.checked;
-                });
+                })
+
+                // deleteBtnSmall.addEventListener("click", function() {
+                //     listTodos.removeChild(deleteBtnSmall.parentElement.parentElement);
+                // });
             }
         }
     }
+
+    //REMOVE ALL TASKS
+    var deleteAllBtn = document.querySelector("#deleteButton");
+    deleteAllBtn.addEventListener("click", function() {
+        var newCheckbox = document.querySelectorAll(".checkbox");
+        var newCheckboxArr = [];
+
+        for (var i = 0; i < tasks.length; i++) {
+            if (tasks[i].done === true) {
+                console.log(tasks);
+                tasks.splice(tasks[i], 1);  // works only AFTER we add a new task :(
+                console.log(tasks);
+            }
+        }
+
+        // if (newCheckbox.checked = true) {
+
+
+            // listTodos.removeChild(deleteAllBtn.parentElement.parentElement);
+            // listTodos.removeChild(hrElements);
+            // console.log("deleteall");
+            // clearList();
+        // }
+        // else{
+        //     console.log("oliwka popsułaś");
+        // }
+
+    });
 
     //REMOVE ALL TASKS FROM HTML
     function clearList() {
