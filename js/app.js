@@ -130,19 +130,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    //REMOVE ALL TASKS
+    //REMOVE ALL DONE TASKS
     var deleteAllBtn = document.querySelector("#deleteButton");
     deleteAllBtn.addEventListener("click", function() {
 
         for (var i = 0; i < tasks.length;) {
             if (tasks[i].done === true) {
                 tasks.splice(i, 1);
-            }
-            else {
+            } else {
                 i++;
             }
-            showTask();
         }
+        showTask();
 
     });
 
