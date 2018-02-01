@@ -117,11 +117,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 const j = i;
                 newCheckbox.addEventListener("change", function () {
                     tasks[j].done = this.checked;
-                })
+                });
 
-                // deleteBtnSmall.addEventListener("click", function() {
-                //     listTodos.removeChild(deleteBtnSmall.parentElement.parentElement);
-                // });
+                deleteBtnSmall.addEventListener("click", function() {
+                    tasks.splice(j, 1);
+                    showTask();
+                });
             }
         }
     }
@@ -132,12 +133,15 @@ document.addEventListener('DOMContentLoaded', function () {
         var newCheckbox = document.querySelectorAll(".checkbox");
         var newCheckboxArr = [];
 
-        for (var i = 0; i < tasks.length; i++) {
+        for (var i = 0; i < tasks.length;) {
             if (tasks[i].done === true) {
                 console.log(tasks);
-                tasks.splice(tasks[i], 1);  // works only AFTER we add a new task :(
+                tasks.splice(i, 1);  // works only AFTER we add a new task :(
                 console.log(tasks);
+            } else {
+                i++;
             }
+            showTask();
         }
 
         // if (newCheckbox.checked = true) {
@@ -216,7 +220,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         clearInput();
-        alertInfo.innerText = " ";
     });
 
     sortTypeOptions.addEventListener("change", function(event){
