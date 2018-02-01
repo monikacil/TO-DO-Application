@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 date: dateField.value,
                 priority: priority.value,
                 description: descriptionField.value,
-                done: false
+                done: false,
+                removed: false
        }
     }
 
@@ -90,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     newCheckbox.checked = "checked";
                 var deleteBtnSmall = create("button", "btn mark deleteBtnSmall");
                 deleteBtnSmall.innerText = "delete";
+                if (tasks[i].removed)
+                    deleteBtnSmall.removed = true;
                 var todoInfoBox = create("div", "todoInfo");
                 var descriptionBox = create("p", "", tasks[i].description);
                 var priorityValueName = create("p", "valueName", "priority ");
@@ -127,34 +130,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    //REMOVE ALL TASKS
+    //REMOVE ALL DONE TASKS
     var deleteAllBtn = document.querySelector("#deleteButton");
     deleteAllBtn.addEventListener("click", function() {
-        var newCheckbox = document.querySelectorAll(".checkbox");
-        var newCheckboxArr = [];
 
         for (var i = 0; i < tasks.length;) {
             if (tasks[i].done === true) {
-                console.log(tasks);
-                tasks.splice(i, 1);  // works only AFTER we add a new task :(
-                console.log(tasks);
+                tasks.splice(i, 1);
             } else {
                 i++;
             }
-            showTask();
         }
-
-        // if (newCheckbox.checked = true) {
-
-
-            // listTodos.removeChild(deleteAllBtn.parentElement.parentElement);
-            // listTodos.removeChild(hrElements);
-            // console.log("deleteall");
-            // clearList();
-        // }
-        // else{
-        //     console.log("oliwka popsułaś");
-        // }
+        showTask();
 
     });
 
