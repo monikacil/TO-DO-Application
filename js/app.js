@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function validate() {
         if (taskNameField.value.length === 0) {
-            alert("You have to add task name");
+            var alertInfo = document.querySelector("p.alertInfo");
+            alertInfo.innerText = "Please input name :(";
             return false
         }
         return true;
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return element;
     }
+
 
     function sortTasks(optionValue){
         if(optionValue === "priority"){
@@ -91,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 var priorityValueName = create("p", "valueName", "priority ");
                 var dateValueName = create("p", "valueName", "date ");
                 var priorityValue = create("span", "priorityValue", tasks[i].priority);
-                var dateValue = create("span", "dateValue", tasks[i].date);
+                var date = tasks[i].date;
+                var dateValue = create("span", "dateValue", date.toString().replace(/\-/g, "."));
                 var hrElement = create("hr");
 
                 var listTodos = document.getElementById("listTodos");
