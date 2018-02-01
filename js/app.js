@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function validate() {
         if (taskNameField.value.length === 0) {
             var alertInfo = document.querySelector("p.alertInfo");
-            alertInfo.innerText = "Please input name :(";
+            alertInfo.innerText = "Please input task name";
             return false
         }
         return true;
@@ -174,11 +174,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 showTask();
                 hideForm();
                 addButton.innerText = addButton.dataset.title;
+                var alertInfo = document.querySelector("p.alertInfo");
+                alertInfo.innerText = " ";
             } else {
                 showForm();
             }
         }
         clearInput();
+        alertInfo.innerText = " ";
     });
 
     sortTypeOptions.addEventListener("change", function(event){
