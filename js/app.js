@@ -230,9 +230,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //GET FROM LOCAL STORAGE AND SHOW
     var getTasks = myStorage.getItem("tasksList");
+    if (getTasks !== null){
+        tasks = JSON.parse(getTasks);
+        showTask();
+    }
     var getSortingStatus = myStorage.getItem("sortingStatus");
-    tasks = JSON.parse(getTasks);
-    sortTypeOptions.value = JSON.parse(getSortingStatus);
-    showTask();
+    if(getSortingStatus !== null){
+        sortTypeOptions.value = JSON.parse(getSortingStatus);
+    }
 
 });
