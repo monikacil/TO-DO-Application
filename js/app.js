@@ -300,4 +300,5 @@ document.addEventListener('DOMContentLoaded', function () {
         sortTypeOptions.value = JSON.parse(getSortingStatus);
     }
 
+
 });
