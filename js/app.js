@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 newCheckbox.setAttribute("type", "checkbox");
                 if (tasks[i].done)
                     newCheckbox.checked = "checked";
-                var deleteBtnSmall = create("button", "btn mark deleteBtnSmall");
+                var deleteBtnSmall = create("button", `btn mark deleteBtnSmall new-wave-${classIndexButtons%3}`);
                 deleteBtnSmall.innerText = "delete";
                 if (tasks[i].removed)
                     deleteBtnSmall.removed = true;
@@ -269,23 +269,25 @@ document.addEventListener('DOMContentLoaded', function () {
     var colorButtons = document.querySelectorAll(".btn.mark");
     var classIndexButtons = 0;
     for (var i = 0; i < colorButtons.length; i++) {
-      colorButtons[i].classList.add("new-vawe-0");
+      colorButtons[i].classList.add("new-wave-0");
     }
     nextColorButtons.addEventListener("click", function() {
+      colorButtons = document.querySelectorAll(".btn.mark");
       classIndexButtons++;
       for (var i = 0; i < colorButtons.length; i++) {
-        colorButtons[i].classList.remove(`new-vawe-${(classIndexButtons-1)%3}`);
-        colorButtons[i].classList.add(`new-vawe-${classIndexButtons%3}`);
+        colorButtons[i].classList.remove(`new-wave-${(classIndexButtons-1)%3}`);
+        colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
       }
     })
     prevColorButtons.addEventListener("click", function() {
+      colorButtons = document.querySelectorAll(".btn.mark");
       classIndexButtons--;
       if(classIndexButtons < 0){
         classIndexButtons = 2;
       }
       for (var i = 0; i < colorButtons.length; i++) {
-        colorButtons[i].classList.remove(`new-vawe-${(classIndexButtons+1)%3}`);
-        colorButtons[i].classList.add(`new-vawe-${classIndexButtons%3}`);
+        colorButtons[i].classList.remove(`new-wave-${(classIndexButtons+1)%3}`);
+        colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
       }
     })
 

@@ -263,34 +263,26 @@ header {
 .newBackground-0 {
   background-color: #fff;
 }
-
-;
 .newBackground-1 {
   @include newBckg(#FF8008, #FFC837);
 }
-
-;
 .newBackground-3 {
   @include newBckg(#085078, #3cbbf7);
 }
-
-;
 .newBackground-2 {
   @include newBckg(#EB3349, #F45C43);
 }
 
-;
-
-.new-vawe-0 {
+.new-wave-0 {
   background-image: url('https://s32.postimg.org/ku0i5xmph/wave_yellow.png');
 }
 
-.new-vawe-1 {
+.new-wave-1 {
   background-image: url('https://s32.postimg.org/5798sk8xh/wave_red.png');
   color: #E74C3C;
 }
 
-.new-vawe-2 {
+.new-wave-2 {
   background-image: url('https://s32.postimg.org/k0nwdbgol/wave_blue.png');
   color: #3CBBF7;
 }
