@@ -58,6 +58,7 @@ p.alertInfo {
       text-transform: uppercase;
       letter-spacing: 0.3rem;
       color: $primary-color;
+      float: left;
     }
     input.add-todo, .form-control {
       color: white;
@@ -177,8 +178,36 @@ p.alertInfo {
     }
   }
 }
-
-
-
-
-
+#change-style{
+  border-radius: 0;
+  float: right;
+  background-color: $primary-color;
+  color: $primary-color-text;
+}
+header{
+  height: 100%;
+  &::before, &::after{
+    content: "";
+    display: table;;
+    clear: both;
+  }
+}
+#options-change-style{
+  background-color: $primary-color;
+  float: right;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  p{
+    font-size: 12px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 5px;
+  }
+  svg{
+    font-size: 12px;
+    cursor: pointer;
+  }
+}

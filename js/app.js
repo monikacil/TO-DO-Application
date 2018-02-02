@@ -217,4 +217,32 @@ document.addEventListener('DOMContentLoaded', function () {
     filterOptions.addEventListener("change", function(){
         showTask();
     });
+    //CHANGE COLORS
+    var changeStyle = document.getElementById("change-style");
+    var optionsChangeStyle = document.getElementById("options-change-style");
+    console.log(changeStyle);
+    console.log(optionsChangeStyle);
+    // changeStyle.addEventListener("click", function() {
+    //
+    //
+    // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });

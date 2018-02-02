@@ -5,6 +5,7 @@
     <title>TODO Application</title>
     <link href="css/main.css" rel="stylesheet">
     <script src="js/app.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -12,7 +13,24 @@
     <div class="row">
         <div class="col-md-12">
             <div class="todolist">
+              <header>
                 <h1>Todos</h1>
+                <button id="change-style" class="btn">style</button>
+              </header>
+              <div id="options-change-style">
+                <i class="fas fa-angle-left"></i>
+                <p>
+                  background
+                </p>
+                <i class="fas fa-angle-right"></i>
+              </div>
+              <div id="options-change-style">
+                <i class="fas fa-angle-left"></i>
+                <p>
+                  buttons
+                </p>
+                <i class="fas fa-angle-right"></i>
+              </div>
                 <button id="addButton" class="btn mark" data-title="New todo"></button>
                 <form action="" id="formTodo">
                     <input type="text" class="add-todo" placeholder="Task name" id="taskName">
