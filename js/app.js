@@ -219,6 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
     sortTypeOptions.addEventListener("change", function(event){
         sortTasks(event.target.value);
         myStorage.setItem("tasksList", JSON.stringify(tasks));
+        myStorage.setItem("sortingStatus", JSON.stringify(event.target.value));
         showTask();
     });
 
@@ -227,9 +228,11 @@ document.addEventListener('DOMContentLoaded', function () {
         showTask();
     });
 
-    //GET FROM LOCAL STORAGE
+    //GET FROM LOCAL STORAGE AND SHOW
     var getTasks = myStorage.getItem("tasksList");
+    var getSortingStatus = myStorage.getItem("sortingStatus");
     tasks = JSON.parse(getTasks);
+    sortTypeOptions.value = JSON.parse(getSortingStatus);
     showTask();
 
 });
