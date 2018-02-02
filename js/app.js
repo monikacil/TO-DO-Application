@@ -2,6 +2,9 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    //LOCAL STORAGE
+    var myStorage = window.localStorage;
+
     //T A S K 1 - validation and saving tasks
     var addButton = document.getElementById("addButton");
 
@@ -72,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var taskObj = createTaskObject();
         tasks.push(taskObj);
         sortTasks(sortTypeOptions.value);
+        myStorage.setItem("tasksList", JSON.stringify(tasks));
     }
 
     //1 REMOVE ALL TASKS
@@ -120,10 +124,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 const j = i;
                 newCheckbox.addEventListener("change", function () {
                     tasks[j].done = this.checked;
+                    myStorage.setItem("tasksList", JSON.stringify(tasks));
                 });
 
                 deleteBtnSmall.addEventListener("click", function() {
                     tasks.splice(j, 1);
+                    myStorage.setItem("tasksList", JSON.stringify(tasks));
                     showTask();
                 });
             }
@@ -141,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 i++;
             }
         }
+        myStorage.setItem("tasksList", JSON.stringify(tasks));
         showTask();
 
     });
@@ -211,12 +218,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     sortTypeOptions.addEventListener("change", function(event){
         sortTasks(event.target.value);
+        myStorage.setItem("tasksList", JSON.stringify(tasks));
+        myStorage.setItem("sortingStatus", JSON.stringify(event.target.value));
         showTask();
     });
 
     filterOptions.addEventListener("change", function(){
+        myStorage.setItem("tasksList", JSON.stringify(tasks));
         showTask();
     });
+
     //CHANGE COLORS - show options
     var changeStyle = document.getElementById("change-style");
     var optionsChangeStyle = document.querySelectorAll(".options-change-style");
@@ -272,26 +283,15 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //GET FROM LOCAL STORAGE AND SHOW
+    var getTasks = myStorage.getItem("tasksList");
+    if (getTasks !== null){
+        tasks = JSON.parse(getTasks);
+        showTask();
+    }
+    var getSortingStatus = myStorage.getItem("sortingStatus");
+    if(getSortingStatus !== null){
+        sortTypeOptions.value = JSON.parse(getSortingStatus);
+    }
 
 });
