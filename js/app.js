@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
       for (var i = 0; i < optionsChangeStyle.length; i++) {
         optionsChangeStyle[i].hidden = !optionsChangeStyle[i].hidden
       }
-    })
+    });
     //CHANGE COLORS - changing background
     var prevBackground = document.querySelector(".color-background .fa-angle-left");
     var nextBackground = document.querySelector(".color-background .fa-angle-right");
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
         colorButtons[i].classList.remove(`new-wave-${(classIndexButtons-1)%3}`);
         colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
       }
-    })
+    });
     prevColorButtons.addEventListener("click", function() {
       colorButtons = document.querySelectorAll(".btn.mark");
       classIndexButtons--;
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
         colorButtons[i].classList.remove(`new-wave-${(classIndexButtons+1)%3}`);
         colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
       }
-    })
+    });
 
     //GET FROM LOCAL STORAGE AND SHOW
     var getTasks = myStorage.getItem("tasksList");

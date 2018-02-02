@@ -110,21 +110,8 @@ p.alertInfo {
     }
 
     .btn.mark.deleteBtnSmall {
-      letter-spacing: 0.05rem;
-      background-position: 0 -50%;
-      background-repeat: repeat-x;
-      transition: background-position .75s ease;
-      color: $primary-color-text;
-      // background-image: url('https://s32.postimg.org/ku0i5xmph/wave_yellow.png');
-      background-color: white;
-      border-radius: 0;
       padding: 0.5rem;
       width: 20%;
-      text-transform: uppercase;
-      box-shadow: none;
-      &:hover {
-        background-position: 100% 60%;
-      }
     }
 
     .row.titles {
