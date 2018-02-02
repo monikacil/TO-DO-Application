@@ -99,11 +99,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     deleteBtnSmall.removed = true;
                 var todoInfoBox = create("div", "todoInfo");
                 var descriptionBox = create("p", "", tasks[i].description);
-                var priorityValueName = create("p", "valueName", "priority ");
-                var dateValueName = create("p", "valueName", "date ");
-                var priorityValue = create("span", "priorityValue", tasks[i].priority);
+                todoInfoBox.appendChild(descriptionBox);
+                if(tasks[i].priority !== "priority") {
+                    var priorityValue = create("span", "priorityValue", tasks[i].priority);
+                    var priorityValueName = create("p", "valueName", "priority ");
+                    todoInfoBox.appendChild(priorityValueName);
+                    priorityValueName.appendChild(priorityValue);
+                }
                 var date = tasks[i].date;
-                var dateValue = create("span", "dateValue", date.toString().replace(/\-/g, "."));
+                if(tasks[i].date.length > 0 ) {
+                    var dateValueName = create("p", "valueName", "date ");
+                    var dateValue = create("span", "dateValue", date.toString().replace(/\-/g, "."));
+                    todoInfoBox.appendChild(dateValueName);
+                    dateValueName.appendChild(dateValue);
+                }
+
                 var hrElement = create("hr");
 
                 var listTodos = document.getElementById("listTodos");
@@ -115,11 +125,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 var titleText = document.createTextNode(tasks[i].title);
                 newLi.appendChild(titleText);
                 newLi.appendChild(todoInfoBox);
-                todoInfoBox.appendChild(descriptionBox);
-                todoInfoBox.appendChild(priorityValueName);
-                priorityValueName.appendChild(priorityValue);
-                todoInfoBox.appendChild(dateValueName);
-                dateValueName.appendChild(dateValue);
 
                 const j = i;
                 newCheckbox.addEventListener("change", function () {
