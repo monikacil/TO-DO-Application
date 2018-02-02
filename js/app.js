@@ -97,6 +97,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 deleteBtnSmall.innerText = "delete";
                 if (tasks[i].removed)
                     deleteBtnSmall.removed = true;
+                var hrElement = create("hr");
+                var listTodos = document.getElementById("listTodos");
+                listTodos.appendChild(hrElement);
                 var todoInfoBox = create("div", "todoInfo");
                 var descriptionBox = create("p", "", tasks[i].description);
                 todoInfoBox.appendChild(descriptionBox);
@@ -114,10 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     dateValueName.appendChild(dateValue);
                 }
 
-                var hrElement = create("hr");
 
-                var listTodos = document.getElementById("listTodos");
-                listTodos.appendChild(hrElement);
                 listTodos.appendChild(newLi);
                 newLi.appendChild(newLabel);
                 newLabel.appendChild(newCheckbox);
@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var titleText = document.createTextNode(tasks[i].title);
                 newLi.appendChild(titleText);
                 newLi.appendChild(todoInfoBox);
+
 
                 const j = i;
                 newCheckbox.addEventListener("change", function () {
