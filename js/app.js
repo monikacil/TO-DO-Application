@@ -217,15 +217,64 @@ document.addEventListener('DOMContentLoaded', function () {
     filterOptions.addEventListener("change", function(){
         showTask();
     });
-    //CHANGE COLORS
+    //CHANGE COLORS - show options
     var changeStyle = document.getElementById("change-style");
-    var optionsChangeStyle = document.getElementById("options-change-style");
-    console.log(changeStyle);
-    console.log(optionsChangeStyle);
-    // changeStyle.addEventListener("click", function() {
-    //
-    //
-    // })
+    var optionsChangeStyle = document.querySelectorAll(".options-change-style");
+
+    optionsChangeStyle[0].hidden = true;
+    optionsChangeStyle[1].hidden = true;
+
+    changeStyle.addEventListener("click", function() {
+      for (var i = 0; i < optionsChangeStyle.length; i++) {
+        optionsChangeStyle[i].hidden = !optionsChangeStyle[i].hidden
+      }
+    })
+    //CHANGE COLORS - changing background
+    var prevBackground = document.querySelector(".color-background .fa-angle-left");
+    var nextBackground = document.querySelector(".color-background .fa-angle-right");
+    var body = document.querySelector("body");
+    var classIndex=0;
+
+    nextBackground.addEventListener("click", function() {
+      classIndex++;
+      body.className = `newBackground-${classIndex%4}`;
+    });
+    prevBackground.addEventListener("click", function() {
+      classIndex--;
+      if(classIndex < 0){
+        classIndex = 3;
+      }
+      body.className = (`newBackground-${classIndex%4}`);
+    });
+    //CHANGE COLORS - changing buttons
+    var prevColorButtons = document.querySelector(".color-buttons .fa-angle-left");
+    var nextColorButtons = document.querySelector(".color-buttons .fa-angle-right");
+    var colorButtons = document.querySelectorAll(".btn.mark");
+    var classIndexButtons = 0;
+    for (var i = 0; i < colorButtons.length; i++) {
+      colorButtons[i].classList.add("new-vawe-0");
+    }
+    nextColorButtons.addEventListener("click", function() {
+      classIndexButtons++;
+      for (var i = 0; i < colorButtons.length; i++) {
+        colorButtons[i].classList.remove(`new-vawe-${(classIndexButtons-1)%3}`);
+        colorButtons[i].classList.add(`new-vawe-${classIndexButtons%3}`);
+      }
+    })
+    prevColorButtons.addEventListener("click", function() {
+      classIndexButtons--;
+      if(classIndexButtons < 0){
+        classIndexButtons = 2;
+      }
+      for (var i = 0; i < colorButtons.length; i++) {
+        colorButtons[i].classList.remove(`new-vawe-${(classIndexButtons+1)%3}`);
+        colorButtons[i].classList.add(`new-vawe-${classIndexButtons%3}`);
+      }
+    })
+
+
+
+
 
 
 
