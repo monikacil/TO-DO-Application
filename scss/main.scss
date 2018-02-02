@@ -273,3 +273,11 @@ header {
   background-image: url('https://s32.postimg.org/k0nwdbgol/wave_blue.png');
   color: #3CBBF7;
 }
+
+
+@media(max-width: 770px) {
+  .sortTypeLabel {
+    position:absolute;
+    bottom: 7rem;
+  }
+}
