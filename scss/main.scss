@@ -13,12 +13,15 @@
   background: linear-gradient(to right, $secondColor, $firstColor);
 }
 
+* {
+  font-family:"Lato", Sans-serif;
+}
+
 body {
   background-color: white;
   font-size: 62.5%; /* 10px */
   width: 100%;
   height: 100vh;
-  font-family: "Lato", Sans-serif;
 }
 
 .row {
@@ -31,7 +34,7 @@ body {
 hr {
   border: 0;
   height: 1px;
-  background: $primary-color;
+  // background: $primary-color;
   margin: 2rem 0;
 }
 
@@ -283,7 +286,6 @@ header {
   color: #3CBBF7;
 }
 
-
 .new-bckg-0{
   background: $primary-color;
 }
@@ -316,4 +318,10 @@ header {
 }
 .new-main-border-2 {
     border-top: 0.3rem solid #3CBBF7;
+}
+@media(max-width: 770px) {
+  .sortTypeLabel {
+    position:absolute;
+    bottom: 7rem;
+  }
 }

@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 deleteBtnSmall.innerText = "delete";
                 if (tasks[i].removed)
                     deleteBtnSmall.removed = true;
-                var hrElement = create("hr");
+                var hrElement = create("hr", `new-bckg-${classIndexButtons%3}`);
                 var listTodos = document.getElementById("listTodos");
                 listTodos.appendChild(hrElement);
                 var todoInfoBox = create("div", "todoInfo");
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 todoInfoBox.appendChild(descriptionBox);
                 if(tasks[i].priority !== "priority") {
                     var priorityValue = create("span", "priorityValue", tasks[i].priority);
-                    var priorityValueName = create("p", "valueName", "priority ");
+                    var priorityValueName = create("p", `valueName new-color-${(classIndexButtons)%3}`, "priority ",);
                     todoInfoBox.appendChild(priorityValueName);
                     priorityValueName.appendChild(priorityValue);
                 }
@@ -243,29 +243,35 @@ document.addEventListener('DOMContentLoaded', function () {
     optionsChangeStyle[1].hidden = true;
 
     changeStyle.addEventListener("click", function() {
-      for (var i = 0; i < optionsChangeStyle.length; i++) {
-        optionsChangeStyle[i].hidden = !optionsChangeStyle[i].hidden
-      }
+        for (var i = 0; i < optionsChangeStyle.length; i++) {
+            optionsChangeStyle[i].hidden = !optionsChangeStyle[i].hidden
+        }
     });
 
     //CHANGE COLORS - changing background
     var prevBackground = document.querySelector(".color-background .fa-angle-left");
     var nextBackground = document.querySelector(".color-background .fa-angle-right");
     var body = document.querySelector("body");
-    var classIndex=0;
+    var classIndexBackground=0;
+
+
+    function changeBackgroundColor(classIndex){
+        body.className = `newBackground-${classIndex%4}`;
+    }
 
     nextBackground.addEventListener("click", function() {
-      classIndex++;
-      body.className = `newBackground-${classIndex%4}`;
+        classIndexBackground++;
+        changeBackgroundColor(classIndexBackground);
+        myStorage.setItem("backgroundColor", JSON.stringify(classIndexBackground));
     });
     prevBackground.addEventListener("click", function() {
-      classIndex--;
-      if(classIndex < 0){
-        classIndex = 3;
-      }
-      body.className = (`newBackground-${classIndex%4}`);
+        classIndexBackground--;
+        if(classIndexBackground < 0){
+            classIndexBackground = 3;
+        }
+        changeBackgroundColor(classIndexBackground);
+        myStorage.setItem("backgroundColor", JSON.stringify(classIndexBackground));
     });
-
 
     //CHANGE COLORS - changing buttons
     //animation
@@ -287,95 +293,149 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //font color & animation - next
-    nextColorButtons.addEventListener("click", function() {
-      colorButtons = document.querySelectorAll(".btn.mark");
-      hr = document.querySelectorAll("hr");
-      valueName = document.querySelectorAll(".valueName");
-      classIndexButtons++;
-      for (var i = 0; i < colorButtons.length; i++) {
-        colorButtons[i].classList.remove(`new-wave-${(classIndexButtons-1)%3}`);
-        colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
-      }
-      for (var i = 0; i < hr.length; i++) {
-        hr[i].classList.remove(`new-bckg-${(classIndexButtons-1)%3}`);
-        hr[i].classList.add(`new-bckg-${(classIndexButtons)%3}`);
-      }
-      for (var i = 0; i < valueName.length; i++) {
-        valueName[i].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        valueName[i].classList.add(`new-color-${(classIndexButtons)%3}`);
-      }
-      for (var i = 0; i < fas.length; i++) {
-        fas[i].classList.remove(`new-border-color-${(classIndexButtons-1)%3}`);
-        fas[i].classList.add(`new-border-color-${classIndexButtons%3}`);
-      }
-      h1.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-      h1.classList.add(`new-color-${(classIndexButtons)%3}`);
-      changeStyle.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-      changeStyle.classList.add(`new-color-${(classIndexButtons)%3}`);
-      optionsChangeStyle[0].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-      optionsChangeStyle[0].classList.add(`new-color-${(classIndexButtons)%3}`);
-      optionsChangeStyle[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-      optionsChangeStyle[1].classList.add(`new-color-${(classIndexButtons)%3}`);
-      sortType[0].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-      sortType[0].classList.add(`new-color-${(classIndexButtons)%3}`);
-      sortType[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-      sortType[1].classList.add(`new-color-${(classIndexButtons)%3}`);
-      todolist.classList.remove(`new-main-border${(classIndexButtons-1)%3}`);
-      todolist.classList.add(`new-main-border-${(classIndexButtons)%3}`);
-    });
 
+    function changeButtonsColor(classIndex){
+        // body.className = `newBackground-${classIndex%4}`;
+        for (var i = 0; i < colorButtons.length; i++) {
+          colorButtons[i].classList.remove(`new-wave-${(classIndexButtons-1)%3}`);
+          colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
+        }
+        for (var i = 0; i < hr.length; i++) {
+          hr[i].classList.remove(`new-bckg-${(classIndexButtons-1)%3}`);
+          hr[i].classList.add(`new-bckg-${(classIndexButtons)%3}`);
+        }
+        for (var i = 0; i < valueName.length; i++) {
+          valueName[i].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+          valueName[i].classList.add(`new-color-${(classIndexButtons)%3}`);
+        }
+        for (var i = 0; i < fas.length; i++) {
+          fas[i].classList.remove(`new-border-color-${(classIndexButtons-1)%3}`);
+          fas[i].classList.add(`new-border-color-${classIndexButtons%3}`);
+        }
+        h1.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        h1.classList.add(`new-color-${(classIndexButtons)%3}`);
+        changeStyle.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        changeStyle.classList.add(`new-color-${(classIndexButtons)%3}`);
+        optionsChangeStyle[0].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        optionsChangeStyle[0].classList.add(`new-color-${(classIndexButtons)%3}`);
+        optionsChangeStyle[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        optionsChangeStyle[1].classList.add(`new-color-${(classIndexButtons)%3}`);
+        sortType[0].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        sortType[0].classList.add(`new-color-${(classIndexButtons)%3}`);
+        sortType[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        sortType[1].classList.add(`new-color-${(classIndexButtons)%3}`);
+        todolist.classList.remove(`new-main-border-${(classIndexButtons-1)%3}`);
+        todolist.classList.add(`new-main-border-${(classIndexButtons)%3}`);
+    }
 
-    //font color & animation - prev
-    prevColorButtons.addEventListener("click", function() {
-      colorButtons = document.querySelectorAll(".btn.mark");
-      hr = document.querySelectorAll("hr");
-      valueName = document.querySelectorAll(".valueName");
-      classIndexButtons--;
-      if(classIndexButtons < 0){
-        classIndexButtons = 2;
-      }
-      for (var i = 0; i < hr.length; i++) {
-        hr[i].classList.remove(`new-bckg-${(classIndexButtons+1)%3}`);
-        hr[i].classList.add(`new-bckg-${(classIndexButtons)%3}`);
-      }
-      for (var i = 0; i < colorButtons.length; i++) {
-        colorButtons[i].classList.remove(`new-wave-${(classIndexButtons+1)%3}`);
-        colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
-      }
-      for (var i = 0; i < valueName.length; i++) {
-        valueName[i].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-        valueName[i].classList.add(`new-color-${(classIndexButtons)%3}`);
-      }
-      for (var i = 0; i < fas.length; i++) {
-        fas[i].classList.remove(`new-border-color-${(classIndexButtons+1)%3}`);
-        fas[i].classList.add(`new-border-color-${classIndexButtons%3}`);
-      }
-      h1.classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-      h1.classList.add(`new-color-${(classIndexButtons)%3}`);
-      changeStyle.classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-      changeStyle.classList.add(`new-color-${(classIndexButtons)%3}`);
-      optionsChangeStyle[0].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-      optionsChangeStyle[0].classList.add(`new-color-${(classIndexButtons)%3}`);
-      optionsChangeStyle[1].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-      optionsChangeStyle[1].classList.add(`new-color-${(classIndexButtons)%3}`);
-      sortType[0].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-      sortType[0].classList.add(`new-color-${(classIndexButtons)%3}`);
-      sortType[1].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-      sortType[1].classList.add(`new-color-${(classIndexButtons)%3}`);
-      todolist.classList.remove(`new-main-border${(classIndexButtons+1)%3}`);
-      todolist.classList.add(`new-main-border-${(classIndexButtons)%3}`);
-    });
+    // function changeButtonsColor(classIndex){
+      nextColorButtons.addEventListener("click", function() {
+        colorButtons = document.querySelectorAll(".btn.mark");
+        hr = document.querySelectorAll("hr");
+        valueName = document.querySelectorAll(".valueName");
+        classIndexButtons++;
+        for (var i = 0; i < colorButtons.length; i++) {
+          colorButtons[i].classList.remove(`new-wave-${(classIndexButtons-1)%3}`);
+          colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
+        }
+        for (var i = 0; i < hr.length; i++) {
+          hr[i].classList.remove(`new-bckg-${(classIndexButtons-1)%3}`);
+          hr[i].classList.add(`new-bckg-${(classIndexButtons)%3}`);
+        }
+        for (var i = 0; i < valueName.length; i++) {
+          valueName[i].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+          valueName[i].classList.add(`new-color-${(classIndexButtons)%3}`);
+        }
+        for (var i = 0; i < fas.length; i++) {
+          fas[i].classList.remove(`new-border-color-${(classIndexButtons-1)%3}`);
+          fas[i].classList.add(`new-border-color-${classIndexButtons%3}`);
+        }
+        h1.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        h1.classList.add(`new-color-${(classIndexButtons)%3}`);
+        changeStyle.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        changeStyle.classList.add(`new-color-${(classIndexButtons)%3}`);
+        optionsChangeStyle[0].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        optionsChangeStyle[0].classList.add(`new-color-${(classIndexButtons)%3}`);
+        optionsChangeStyle[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        optionsChangeStyle[1].classList.add(`new-color-${(classIndexButtons)%3}`);
+        sortType[0].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        sortType[0].classList.add(`new-color-${(classIndexButtons)%3}`);
+        sortType[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        sortType[1].classList.add(`new-color-${(classIndexButtons)%3}`);
+        todolist.classList.remove(`new-main-border-${(classIndexButtons-1)%3}`);
+        todolist.classList.add(`new-main-border-${(classIndexButtons)%3}`);
+        changeButtonsColor(classIndexButtons);
+        myStorage.setItem("buttonsColor", JSON.stringify(classIndexButtons));
+        });
 
-    //GET FROM LOCAL STORAGE AND SHOW
+        prevColorButtons.addEventListener("click", function() {
+          colorButtons = document.querySelectorAll(".btn.mark");
+          hr = document.querySelectorAll("hr");
+          valueName = document.querySelectorAll(".valueName");
+          classIndexButtons--;
+          if(classIndexButtons < 0){
+            classIndexButtons = 2;
+          }
+          for (var i = 0; i < hr.length; i++) {
+            hr[i].classList.remove(`new-bckg-${(classIndexButtons+1)%3}`);
+            hr[i].classList.add(`new-bckg-${(classIndexButtons)%3}`);
+          }
+          for (var i = 0; i < colorButtons.length; i++) {
+            colorButtons[i].classList.remove(`new-wave-${(classIndexButtons+1)%3}`);
+            colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
+          }
+          for (var i = 0; i < valueName.length; i++) {
+            valueName[i].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
+            valueName[i].classList.add(`new-color-${(classIndexButtons)%3}`);
+          }
+          for (var i = 0; i < fas.length; i++) {
+            fas[i].classList.remove(`new-border-color-${(classIndexButtons+1)%3}`);
+            fas[i].classList.add(`new-border-color-${classIndexButtons%3}`);
+          }
+          h1.classList.remove(`new-color-${(classIndexButtons+1)%3}`);
+          h1.classList.add(`new-color-${(classIndexButtons)%3}`);
+          changeStyle.classList.remove(`new-color-${(classIndexButtons+1)%3}`);
+          changeStyle.classList.add(`new-color-${(classIndexButtons)%3}`);
+          optionsChangeStyle[0].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
+          optionsChangeStyle[0].classList.add(`new-color-${(classIndexButtons)%3}`);
+          optionsChangeStyle[1].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
+          optionsChangeStyle[1].classList.add(`new-color-${(classIndexButtons)%3}`);
+          sortType[0].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
+          sortType[0].classList.add(`new-color-${(classIndexButtons)%3}`);
+          sortType[1].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
+          sortType[1].classList.add(`new-color-${(classIndexButtons)%3}`);
+          todolist.classList.remove(`new-main-border-${(classIndexButtons+1)%3}`);
+          todolist.classList.add(`new-main-border-${(classIndexButtons)%3}`);
+          changeButtonsColor(classIndexButtons);
+          myStorage.setItem("buttonsColor", JSON.stringify(classIndexButtons));
+          });
+
+    // GET FROM LOCAL STORAGE AND SHOW
     var getTasks = myStorage.getItem("tasksList");
     if (getTasks !== null){
         tasks = JSON.parse(getTasks);
         showTask();
     }
+
     var getSortingStatus = myStorage.getItem("sortingStatus");
     if(getSortingStatus !== null){
         sortTypeOptions.value = JSON.parse(getSortingStatus);
     }
 
+    var getBackgroundColor = myStorage.getItem("backgroundColor");
+    if(getBackgroundColor !== null){
+        classIndexBackground = JSON.parse(getBackgroundColor);
+        changeBackgroundColor(classIndexBackground);
+    } else {
+        changeBackgroundColor(0);
+    }
+
+    var getButtonsColor = myStorage.getItem("buttonsColor");
+    if(getButtonsColor !== null){
+        classIndexButtons = JSON.parse(getButtonsColor);
+        changeButtonsColor(classIndexButtons);
+    } else {
+        changeButtonsColor(0);
+    }
 
 });

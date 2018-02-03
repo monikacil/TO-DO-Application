@@ -31,7 +31,7 @@
                 </p>
                 <div class="fas fa-angle-right new-border-color-0"></div>
               </div>
-                <button id="addButton" class="btn mark" data-title="New todo"></button>
+                <button id="addButton" class="btn mark new-wave-0" data-title="New todo"></button>
                 <form action="" id="formTodo">
                     <input type="text" class="add-todo" placeholder="Task name" id="taskName">
                     <input type="text" class="add-todo" placeholder="Description" id="description">
@@ -49,38 +49,10 @@
 
                 <div class="todos">
                     <ul id="listTodos" class="list-unstyled">
-                        <!--<li class="ui-state-default">
-                            <label><input type="checkbox" value=""/>Learn CSS</label>
-                            <div class="todoInfo">
-                                <p>Make 5000 projects in 10 days</p>
-                                <p class="valueName">priority&nbsp;<span class="priorityValue">3</span></p>
-                                <p class="valueName">date&nbsp;<span class="dateValue">03.10.2020</span></p>
-                            </div>
-                        </li>
-                        <hr>
-                        <li class="ui-state-default">
-                            <label>
-                                <input type="checkbox" value=""/>Make TODO list</label>
-                            <div class="todoInfo">
-                                <p>Be pro and do something boring</p>
-                                <p class="valueName">priority&nbsp;<span class="priorityValue">5</span></p>
-                                <p class="valueName">date&nbsp;<span class="dateValue">03.10.2018</span></p>
-                            </div>
-                        </li>
-                        <hr>
-                        <li class="ui-state-default">
-                            <label>
-                                <input type="checkbox" value=""/>Be a master of JS</label>
-                            <div class="todoInfo">
-                                <p>Most important, learn React and Angular</p>
-                                <p class="valueName">priority&nbsp;<span class="priorityValue">1</span></p>
-                                <p class="valueName">date&nbsp;<span class="dateValue">03.02.2018</span></p>
-                            </div>
-                        </li>-->
                     </ul>
                     <div class="sorting">
                     <div class="row titles">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 sortTypeLabel">
                             <label for="select1" class="sortType new-color-0">Sorting type</label>
                         </div>
                         <div class="form-group col-md-6">
@@ -88,7 +60,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 ">
                             <select class="form-control sortTypeOptions" id="select1">
                                 <option value="id">-----</option>
                                 <option value="deadline">Deadline</option>
