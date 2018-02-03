@@ -13,12 +13,15 @@
   background: linear-gradient(to right, $secondColor, $firstColor);
 }
 
+* {
+  font-family:"Lato", Sans-serif;
+}
+
 body {
   background-color: white;
   font-size: 62.5%; /* 10px */
   width: 100%;
   height: 100vh;
-  font-family: "Lato", Sans-serif;
 }
 
 .row {
