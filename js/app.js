@@ -242,32 +242,36 @@ document.addEventListener('DOMContentLoaded', function () {
     optionsChangeStyle[1].hidden = true;
 
     changeStyle.addEventListener("click", function() {
-      for (var i = 0; i < optionsChangeStyle.length; i++) {
-        optionsChangeStyle[i].hidden = !optionsChangeStyle[i].hidden
-      }
+        for (var i = 0; i < optionsChangeStyle.length; i++) {
+            optionsChangeStyle[i].hidden = !optionsChangeStyle[i].hidden
+        }
     });
+
     //CHANGE COLORS - changing background
     var prevBackground = document.querySelector(".color-background .fa-angle-left");
     var nextBackground = document.querySelector(".color-background .fa-angle-right");
     var body = document.querySelector("body");
     var classIndexBackground=0;
 
+
     function changeBackgroundColor(classIndex){
         body.className = `newBackground-${classIndex%4}`;
     }
 
     nextBackground.addEventListener("click", function() {
-      classIndexBackground++;
-      changeBackgroundColor(classIndexBackground);
+        classIndexBackground++;
+        changeBackgroundColor(classIndexBackground);
+        myStorage.setItem("backgroundColor", JSON.stringify(classIndexBackground));
     });
     prevBackground.addEventListener("click", function() {
-      classIndexBackground--;
-      if(classIndexBackground < 0){
-        classIndexBackground = 3;
-      }
-      changeBackgroundColor(classIndexBackground);
+        classIndexBackground--;
+        if(classIndexBackground < 0){
+            classIndexBackground = 3;
+        }
+        changeBackgroundColor(classIndexBackground);
+        myStorage.setItem("backgroundColor", JSON.stringify(classIndexBackground));
     });
-    
+
     //CHANGE COLORS - changing buttons
     var prevColorButtons = document.querySelector(".color-buttons .fa-angle-left");
     var nextColorButtons = document.querySelector(".color-buttons .fa-angle-right");
@@ -281,20 +285,21 @@ document.addEventListener('DOMContentLoaded', function () {
             colorButtons[i].classList.add(`new-wave-${classIndex%3}`);
         }
     }
-    changeButtonsColor(classIndexButtons);
 
     nextColorButtons.addEventListener("click", function() {
-      colorButtons = document.querySelectorAll(".btn.mark");
-      classIndexButtons++;
-      changeButtonsColor(classIndexButtons);
+        colorButtons = document.querySelectorAll(".btn.mark");
+        classIndexButtons++;
+        changeButtonsColor(classIndexButtons);
+        myStorage.setItem("buttonsColor", JSON.stringify(classIndexButtons));
     });
     prevColorButtons.addEventListener("click", function() {
-      colorButtons = document.querySelectorAll(".btn.mark");
-      classIndexButtons--;
-      if(classIndexButtons < 0){
-        classIndexButtons = 2;
-      }
-      changeButtonsColor(classIndexButtons);
+        colorButtons = document.querySelectorAll(".btn.mark");
+        classIndexButtons--;
+        if(classIndexButtons < 0){
+            classIndexButtons = 2;
+        }
+        changeButtonsColor(classIndexButtons);
+        myStorage.setItem("buttonsColor", JSON.stringify(classIndexButtons));
     });
 
     //GET FROM LOCAL STORAGE AND SHOW
@@ -303,10 +308,26 @@ document.addEventListener('DOMContentLoaded', function () {
         tasks = JSON.parse(getTasks);
         showTask();
     }
+
     var getSortingStatus = myStorage.getItem("sortingStatus");
     if(getSortingStatus !== null){
         sortTypeOptions.value = JSON.parse(getSortingStatus);
     }
 
+    var getBackgroundColor = myStorage.getItem("backgroundColor");
+    if(getBackgroundColor !== null){
+        classIndexBackground = JSON.parse(getBackgroundColor);
+        changeBackgroundColor(classIndexBackground);
+    } else {
+        changeBackgroundColor(0);
+    }
+
+    var getButtonsColor = myStorage.getItem("buttonsColor");
+    if(getButtonsColor !== null){
+        classIndexButtons = JSON.parse(getButtonsColor);
+        changeButtonsColor(classIndexButtons);
+    } else {
+        changeButtonsColor(0);
+    }
 
 });
