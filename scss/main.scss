@@ -64,7 +64,7 @@ p.alertInfo {
       font-size: 1.5rem;
       text-transform: uppercase;
       letter-spacing: 0.3rem;
-      color: $primary-color;
+      // color: $primary-color;
       float: left;
     }
     input.add-todo, .form-control {
@@ -120,7 +120,7 @@ p.alertInfo {
       .form-group {
         .sortType {
           font-weight: bold;
-          color: $primary-color;
+          // color: $primary-color;
           font-size: 1rem;
           letter-spacing: 0.05rem;
           margin-top: 1rem;
@@ -176,7 +176,7 @@ p.alertInfo {
   border-radius: 0;
   float: right;
   background-color: transparent;
-  color: $primary-color;
+  // color: $primary-color;
   opacity: 0.6;
   box-shadow: none;
   letter-spacing: 0.5rem;
@@ -266,10 +266,26 @@ header {
 
 .new-wave-1 {
   background-image: url('https://s32.postimg.org/5798sk8xh/wave_red.png');
-  color: #E74C3C;
 }
 
 .new-wave-2 {
   background-image: url('https://s32.postimg.org/k0nwdbgol/wave_blue.png');
+}
+.new-color-0 {
+  color: $primary-color;
+}
+.new-color-1 {
+  color: #E74C3C;
+}
+.new-color-2{
   color: #3CBBF7;
+}
+.new-bckg-0{
+  background: $primary-color;
+}
+.new-bckg-1{
+  background: #E74C3C;
+}
+.new-bckg-2{
+  background:  #3CBBF7;
 }
