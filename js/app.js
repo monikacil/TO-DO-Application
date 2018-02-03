@@ -234,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
         showTask();
     });
 
+
     //CHANGE COLORS - show options
     var changeStyle = document.getElementById("change-style");
     var optionsChangeStyle = document.querySelectorAll(".options-change-style");
@@ -246,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
         optionsChangeStyle[i].hidden = !optionsChangeStyle[i].hidden
       }
     });
+
     //CHANGE COLORS - changing background
     var prevBackground = document.querySelector(".color-background .fa-angle-left");
     var nextBackground = document.querySelector(".color-background .fa-angle-right");
@@ -263,6 +265,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       body.className = (`newBackground-${classIndex%4}`);
     });
+
+
     //CHANGE COLORS - changing buttons
     //animation
     var prevColorButtons = document.querySelector(".color-buttons .fa-angle-left");
@@ -276,18 +280,17 @@ document.addEventListener('DOMContentLoaded', function () {
     //font color
     var h1 = document.querySelector("h1");
     var hr = document.querySelectorAll("hr");
-    var todolist = document.querySelectorAll(".todolist");
+    var todolist = document.querySelector(".todolist");
     var sortType = document.querySelectorAll(".sortType");
-    var valueName = document.querySelector("p.valueName");
-    // var newColorObjectsArray = [].concat(optionsChangeStyle, changeStyle);
-    // console.log(newColorObjectsArray);
+    var valueName = document.querySelectorAll(".valueName");
+    var fas = document.querySelectorAll(".fas");
 
 
-    //font color & animation
-
+    //font color & animation - next
     nextColorButtons.addEventListener("click", function() {
       colorButtons = document.querySelectorAll(".btn.mark");
       hr = document.querySelectorAll("hr");
+      valueName = document.querySelectorAll(".valueName");
       classIndexButtons++;
       for (var i = 0; i < colorButtons.length; i++) {
         colorButtons[i].classList.remove(`new-wave-${(classIndexButtons-1)%3}`);
@@ -297,11 +300,14 @@ document.addEventListener('DOMContentLoaded', function () {
         hr[i].classList.remove(`new-bckg-${(classIndexButtons-1)%3}`);
         hr[i].classList.add(`new-bckg-${(classIndexButtons)%3}`);
       }
-      // for (var i = 0; i < newColorObjectsArray.length; i++) {
-      //   newColorObjectsArray[i].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-      //   newColorObjectsArray[i].classList.add(`new-color-${(classIndexButtons)%3}`);
-      // }
-
+      for (var i = 0; i < valueName.length; i++) {
+        valueName[i].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
+        valueName[i].classList.add(`new-color-${(classIndexButtons)%3}`);
+      }
+      for (var i = 0; i < fas.length; i++) {
+        fas[i].classList.remove(`new-border-color-${(classIndexButtons-1)%3}`);
+        fas[i].classList.add(`new-border-color-${classIndexButtons%3}`);
+      }
       h1.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
       h1.classList.add(`new-color-${(classIndexButtons)%3}`);
       changeStyle.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
@@ -314,10 +320,16 @@ document.addEventListener('DOMContentLoaded', function () {
       sortType[0].classList.add(`new-color-${(classIndexButtons)%3}`);
       sortType[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
       sortType[1].classList.add(`new-color-${(classIndexButtons)%3}`);
+      todolist.classList.remove(`new-main-border${(classIndexButtons-1)%3}`);
+      todolist.classList.add(`new-main-border-${(classIndexButtons)%3}`);
     });
+
+
+    //font color & animation - prev
     prevColorButtons.addEventListener("click", function() {
       colorButtons = document.querySelectorAll(".btn.mark");
       hr = document.querySelectorAll("hr");
+      valueName = document.querySelectorAll(".valueName");
       classIndexButtons--;
       if(classIndexButtons < 0){
         classIndexButtons = 2;
@@ -330,10 +342,14 @@ document.addEventListener('DOMContentLoaded', function () {
         colorButtons[i].classList.remove(`new-wave-${(classIndexButtons+1)%3}`);
         colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
       }
-      // for (var i = 0; i < newColorObjectsArray.length; i++) {
-      //   newColorObjectsArray[i].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-      //   newColorObjectsArray[i].classList.add(`new-color-${(classIndexButtons)%3}`);
-      // }
+      for (var i = 0; i < valueName.length; i++) {
+        valueName[i].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
+        valueName[i].classList.add(`new-color-${(classIndexButtons)%3}`);
+      }
+      for (var i = 0; i < fas.length; i++) {
+        fas[i].classList.remove(`new-border-color-${(classIndexButtons+1)%3}`);
+        fas[i].classList.add(`new-border-color-${classIndexButtons%3}`);
+      }
       h1.classList.remove(`new-color-${(classIndexButtons+1)%3}`);
       h1.classList.add(`new-color-${(classIndexButtons)%3}`);
       changeStyle.classList.remove(`new-color-${(classIndexButtons+1)%3}`);
@@ -346,6 +362,8 @@ document.addEventListener('DOMContentLoaded', function () {
       sortType[0].classList.add(`new-color-${(classIndexButtons)%3}`);
       sortType[1].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
       sortType[1].classList.add(`new-color-${(classIndexButtons)%3}`);
+      todolist.classList.remove(`new-main-border${(classIndexButtons+1)%3}`);
+      todolist.classList.add(`new-main-border-${(classIndexButtons)%3}`);
     });
 
     //GET FROM LOCAL STORAGE AND SHOW
