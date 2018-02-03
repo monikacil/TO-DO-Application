@@ -250,34 +250,43 @@ document.addEventListener('DOMContentLoaded', function () {
     var prevBackground = document.querySelector(".color-background .fa-angle-left");
     var nextBackground = document.querySelector(".color-background .fa-angle-right");
     var body = document.querySelector("body");
-    var classIndex=0;
+    var classIndexBackground=0;
+
+    function changeBackgroundColor(classIndex){
+        body.className = `newBackground-${classIndex%4}`;
+    }
 
     nextBackground.addEventListener("click", function() {
-      classIndex++;
-      body.className = `newBackground-${classIndex%4}`;
+      classIndexBackground++;
+      changeBackgroundColor(classIndexBackground);
     });
     prevBackground.addEventListener("click", function() {
-      classIndex--;
-      if(classIndex < 0){
-        classIndex = 3;
+      classIndexBackground--;
+      if(classIndexBackground < 0){
+        classIndexBackground = 3;
       }
-      body.className = (`newBackground-${classIndex%4}`);
+      changeBackgroundColor(classIndexBackground);
     });
+    
     //CHANGE COLORS - changing buttons
     var prevColorButtons = document.querySelector(".color-buttons .fa-angle-left");
     var nextColorButtons = document.querySelector(".color-buttons .fa-angle-right");
     var colorButtons = document.querySelectorAll(".btn.mark");
     var classIndexButtons = 0;
-    for (var i = 0; i < colorButtons.length; i++) {
-      colorButtons[i].classList.add("new-wave-0");
+
+    function changeButtonsColor(classIndex){
+        for (var i = 0; i < colorButtons.length; i++) {
+            colorButtons[i].classList.remove(`new-wave-${(classIndex-1)%3}`);
+            colorButtons[i].classList.remove(`new-wave-${(classIndex+1)%3}`);
+            colorButtons[i].classList.add(`new-wave-${classIndex%3}`);
+        }
     }
+    changeButtonsColor(classIndexButtons);
+
     nextColorButtons.addEventListener("click", function() {
       colorButtons = document.querySelectorAll(".btn.mark");
       classIndexButtons++;
-      for (var i = 0; i < colorButtons.length; i++) {
-        colorButtons[i].classList.remove(`new-wave-${(classIndexButtons-1)%3}`);
-        colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
-      }
+      changeButtonsColor(classIndexButtons);
     });
     prevColorButtons.addEventListener("click", function() {
       colorButtons = document.querySelectorAll(".btn.mark");
@@ -285,10 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if(classIndexButtons < 0){
         classIndexButtons = 2;
       }
-      for (var i = 0; i < colorButtons.length; i++) {
-        colorButtons[i].classList.remove(`new-wave-${(classIndexButtons+1)%3}`);
-        colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
-      }
+      changeButtonsColor(classIndexButtons);
     });
 
     //GET FROM LOCAL STORAGE AND SHOW
