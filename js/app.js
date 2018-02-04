@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 newCheckbox.setAttribute("type", "checkbox");
                 if (tasks[i].done)
                     newCheckbox.checked = "checked";
-                var deleteBtnSmall = create("button", `btn mark deleteBtnSmall new-wave-${classIndexButtons%3}`);
+                var deleteBtnSmall = create("button", "btn mark deleteBtnSmall");
                 deleteBtnSmall.innerText = "delete";
                 if (tasks[i].removed)
                     deleteBtnSmall.removed = true;
-                var hrElement = create("hr", `new-bckg-${classIndexButtons%3}`);
+                var hrElement = create("hr", "");
                 var listTodos = document.getElementById("listTodos");
                 listTodos.appendChild(hrElement);
                 var todoInfoBox = create("div", "todoInfo");
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 todoInfoBox.appendChild(descriptionBox);
                 if(tasks[i].priority !== "priority") {
                     var priorityValue = create("span", "priorityValue", tasks[i].priority);
-                    var priorityValueName = create("p", `valueName new-color-${(classIndexButtons)%3}`, "priority ",);
+                    var priorityValueName = create("p", "valueName", "priority ");
                     todoInfoBox.appendChild(priorityValueName);
                     priorityValueName.appendChild(priorityValue);
                 }
@@ -140,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         }
+        changeButtonsColor(classIndexButtons);
     }
 
     //REMOVE ALL DONE TASKS
