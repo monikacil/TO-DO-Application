@@ -277,138 +277,67 @@ document.addEventListener('DOMContentLoaded', function () {
     //animation
     var prevColorButtons = document.querySelector(".color-buttons .fa-angle-left");
     var nextColorButtons = document.querySelector(".color-buttons .fa-angle-right");
-    var colorButtons = document.querySelectorAll(".btn.mark");
     var classIndexButtons = 0;
 
-    for (var i = 0; i < colorButtons.length; i++) {
-      colorButtons[i].classList.add("new-wave-0");
-    }
     //font color
     var h1 = document.querySelector("h1");
-    var hr = document.querySelectorAll("hr");
     var todolist = document.querySelector(".todolist");
     var sortType = document.querySelectorAll(".sortType");
-    var valueName = document.querySelectorAll(".valueName");
     var fas = document.querySelectorAll(".fas");
 
 
     //font color & animation - next
 
     function changeButtonsColor(classIndex){
-        // body.className = `newBackground-${classIndex%4}`;
+        var valueName = document.querySelectorAll(".valueName");
+        var hr = document.querySelectorAll("hr");
+        var colorButtons = document.querySelectorAll(".btn.mark");
         for (var i = 0; i < colorButtons.length; i++) {
-          colorButtons[i].classList.remove(`new-wave-${(classIndexButtons-1)%3}`);
-          colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
+          colorButtons[i].classList.remove(`new-wave-${(classIndex-1)%3}`);
+          colorButtons[i].classList.add(`new-wave-${classIndex%3}`);
         }
         for (var i = 0; i < hr.length; i++) {
-          hr[i].classList.remove(`new-bckg-${(classIndexButtons-1)%3}`);
-          hr[i].classList.add(`new-bckg-${(classIndexButtons)%3}`);
+          hr[i].classList.remove(`new-bckg-${(classIndex-1)%3}`);
+          hr[i].classList.add(`new-bckg-${(classIndex)%3}`);
         }
         for (var i = 0; i < valueName.length; i++) {
-          valueName[i].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-          valueName[i].classList.add(`new-color-${(classIndexButtons)%3}`);
+          valueName[i].classList.remove(`new-color-${(classIndex-1)%3}`);
+          valueName[i].classList.add(`new-color-${(classIndex)%3}`);
         }
         for (var i = 0; i < fas.length; i++) {
-          fas[i].classList.remove(`new-border-color-${(classIndexButtons-1)%3}`);
-          fas[i].classList.add(`new-border-color-${classIndexButtons%3}`);
+          fas[i].classList.remove(`new-border-color-${(classIndex-1)%3}`);
+          fas[i].classList.add(`new-border-color-${classIndex%3}`);
         }
-        h1.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        h1.classList.add(`new-color-${(classIndexButtons)%3}`);
-        changeStyle.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        changeStyle.classList.add(`new-color-${(classIndexButtons)%3}`);
-        optionsChangeStyle[0].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        optionsChangeStyle[0].classList.add(`new-color-${(classIndexButtons)%3}`);
-        optionsChangeStyle[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        optionsChangeStyle[1].classList.add(`new-color-${(classIndexButtons)%3}`);
-        sortType[0].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        sortType[0].classList.add(`new-color-${(classIndexButtons)%3}`);
-        sortType[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        sortType[1].classList.add(`new-color-${(classIndexButtons)%3}`);
-        todolist.classList.remove(`new-main-border-${(classIndexButtons-1)%3}`);
-        todolist.classList.add(`new-main-border-${(classIndexButtons)%3}`);
+        h1.classList.remove(`new-color-${(classIndex-1)%3}`);
+        h1.classList.add(`new-color-${(classIndex)%3}`);
+        changeStyle.classList.remove(`new-color-${(classIndex-1)%3}`);
+        changeStyle.classList.add(`new-color-${(classIndex)%3}`);
+        optionsChangeStyle[0].classList.remove(`new-color-${(classIndex-1)%3}`);
+        optionsChangeStyle[0].classList.add(`new-color-${(classIndex)%3}`);
+        optionsChangeStyle[1].classList.remove(`new-color-${(classIndex-1)%3}`);
+        optionsChangeStyle[1].classList.add(`new-color-${(classIndex)%3}`);
+        sortType[0].classList.remove(`new-color-${(classIndex-1)%3}`);
+        sortType[0].classList.add(`new-color-${(classIndex)%3}`);
+        sortType[1].classList.remove(`new-color-${(classIndex-1)%3}`);
+        sortType[1].classList.add(`new-color-${(classIndex)%3}`);
+        todolist.classList.remove(`new-main-border-${(classIndex-1)%3}`);
+        todolist.classList.add(`new-main-border-${(classIndex)%3}`);
     }
 
-    // function changeButtonsColor(classIndex){
-      nextColorButtons.addEventListener("click", function() {
-        colorButtons = document.querySelectorAll(".btn.mark");
-        hr = document.querySelectorAll("hr");
-        valueName = document.querySelectorAll(".valueName");
+    nextColorButtons.addEventListener("click", function() {
         classIndexButtons++;
-        for (var i = 0; i < colorButtons.length; i++) {
-          colorButtons[i].classList.remove(`new-wave-${(classIndexButtons-1)%3}`);
-          colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
-        }
-        for (var i = 0; i < hr.length; i++) {
-          hr[i].classList.remove(`new-bckg-${(classIndexButtons-1)%3}`);
-          hr[i].classList.add(`new-bckg-${(classIndexButtons)%3}`);
-        }
-        for (var i = 0; i < valueName.length; i++) {
-          valueName[i].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-          valueName[i].classList.add(`new-color-${(classIndexButtons)%3}`);
-        }
-        for (var i = 0; i < fas.length; i++) {
-          fas[i].classList.remove(`new-border-color-${(classIndexButtons-1)%3}`);
-          fas[i].classList.add(`new-border-color-${classIndexButtons%3}`);
-        }
-        h1.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        h1.classList.add(`new-color-${(classIndexButtons)%3}`);
-        changeStyle.classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        changeStyle.classList.add(`new-color-${(classIndexButtons)%3}`);
-        optionsChangeStyle[0].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        optionsChangeStyle[0].classList.add(`new-color-${(classIndexButtons)%3}`);
-        optionsChangeStyle[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        optionsChangeStyle[1].classList.add(`new-color-${(classIndexButtons)%3}`);
-        sortType[0].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        sortType[0].classList.add(`new-color-${(classIndexButtons)%3}`);
-        sortType[1].classList.remove(`new-color-${(classIndexButtons-1)%3}`);
-        sortType[1].classList.add(`new-color-${(classIndexButtons)%3}`);
-        todolist.classList.remove(`new-main-border-${(classIndexButtons-1)%3}`);
-        todolist.classList.add(`new-main-border-${(classIndexButtons)%3}`);
         changeButtonsColor(classIndexButtons);
         myStorage.setItem("buttonsColor", JSON.stringify(classIndexButtons));
-        });
+    });
 
-        prevColorButtons.addEventListener("click", function() {
-          colorButtons = document.querySelectorAll(".btn.mark");
-          hr = document.querySelectorAll("hr");
-          valueName = document.querySelectorAll(".valueName");
-          classIndexButtons--;
-          if(classIndexButtons < 0){
+    prevColorButtons.addEventListener("click", function() {
+        classIndexButtons--;
+        if(classIndexButtons < 0){
             classIndexButtons = 2;
-          }
-          for (var i = 0; i < hr.length; i++) {
-            hr[i].classList.remove(`new-bckg-${(classIndexButtons+1)%3}`);
-            hr[i].classList.add(`new-bckg-${(classIndexButtons)%3}`);
-          }
-          for (var i = 0; i < colorButtons.length; i++) {
-            colorButtons[i].classList.remove(`new-wave-${(classIndexButtons+1)%3}`);
-            colorButtons[i].classList.add(`new-wave-${classIndexButtons%3}`);
-          }
-          for (var i = 0; i < valueName.length; i++) {
-            valueName[i].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-            valueName[i].classList.add(`new-color-${(classIndexButtons)%3}`);
-          }
-          for (var i = 0; i < fas.length; i++) {
-            fas[i].classList.remove(`new-border-color-${(classIndexButtons+1)%3}`);
-            fas[i].classList.add(`new-border-color-${classIndexButtons%3}`);
-          }
-          h1.classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-          h1.classList.add(`new-color-${(classIndexButtons)%3}`);
-          changeStyle.classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-          changeStyle.classList.add(`new-color-${(classIndexButtons)%3}`);
-          optionsChangeStyle[0].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-          optionsChangeStyle[0].classList.add(`new-color-${(classIndexButtons)%3}`);
-          optionsChangeStyle[1].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-          optionsChangeStyle[1].classList.add(`new-color-${(classIndexButtons)%3}`);
-          sortType[0].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-          sortType[0].classList.add(`new-color-${(classIndexButtons)%3}`);
-          sortType[1].classList.remove(`new-color-${(classIndexButtons+1)%3}`);
-          sortType[1].classList.add(`new-color-${(classIndexButtons)%3}`);
-          todolist.classList.remove(`new-main-border-${(classIndexButtons+1)%3}`);
-          todolist.classList.add(`new-main-border-${(classIndexButtons)%3}`);
-          changeButtonsColor(classIndexButtons);
-          myStorage.setItem("buttonsColor", JSON.stringify(classIndexButtons));
-          });
+        }
+        changeButtonsColor(classIndexButtons);
+        myStorage.setItem("buttonsColor", JSON.stringify(classIndexButtons));
+    });
 
     // GET FROM LOCAL STORAGE AND SHOW
     var getTasks = myStorage.getItem("tasksList");
