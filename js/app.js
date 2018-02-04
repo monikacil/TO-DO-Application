@@ -294,33 +294,44 @@ document.addEventListener('DOMContentLoaded', function () {
         var colorButtons = document.querySelectorAll(".btn.mark");
         for (var i = 0; i < colorButtons.length; i++) {
           colorButtons[i].classList.remove(`new-wave-${(classIndex-1)%3}`);
+          colorButtons[i].classList.remove(`new-wave-${(classIndex+1)%3}`);
           colorButtons[i].classList.add(`new-wave-${classIndex%3}`);
         }
         for (var i = 0; i < hr.length; i++) {
           hr[i].classList.remove(`new-bckg-${(classIndex-1)%3}`);
+          hr[i].classList.remove(`new-bckg-${(classIndex+1)%3}`);
           hr[i].classList.add(`new-bckg-${(classIndex)%3}`);
         }
         for (var i = 0; i < valueName.length; i++) {
           valueName[i].classList.remove(`new-color-${(classIndex-1)%3}`);
+          valueName[i].classList.remove(`new-color-${(classIndex+1)%3}`);
           valueName[i].classList.add(`new-color-${(classIndex)%3}`);
         }
         for (var i = 0; i < fas.length; i++) {
           fas[i].classList.remove(`new-border-color-${(classIndex-1)%3}`);
+          fas[i].classList.remove(`new-border-color-${(classIndex+1)%3}`);
           fas[i].classList.add(`new-border-color-${classIndex%3}`);
         }
         h1.classList.remove(`new-color-${(classIndex-1)%3}`);
+        h1.classList.remove(`new-color-${(classIndex+1)%3}`);
         h1.classList.add(`new-color-${(classIndex)%3}`);
         changeStyle.classList.remove(`new-color-${(classIndex-1)%3}`);
+        changeStyle.classList.remove(`new-color-${(classIndex+1)%3}`);
         changeStyle.classList.add(`new-color-${(classIndex)%3}`);
         optionsChangeStyle[0].classList.remove(`new-color-${(classIndex-1)%3}`);
+        optionsChangeStyle[0].classList.remove(`new-color-${(classIndex+1)%3}`);
         optionsChangeStyle[0].classList.add(`new-color-${(classIndex)%3}`);
         optionsChangeStyle[1].classList.remove(`new-color-${(classIndex-1)%3}`);
+        optionsChangeStyle[1].classList.remove(`new-color-${(classIndex+1)%3}`);
         optionsChangeStyle[1].classList.add(`new-color-${(classIndex)%3}`);
         sortType[0].classList.remove(`new-color-${(classIndex-1)%3}`);
+        sortType[0].classList.remove(`new-color-${(classIndex+1)%3}`);
         sortType[0].classList.add(`new-color-${(classIndex)%3}`);
         sortType[1].classList.remove(`new-color-${(classIndex-1)%3}`);
+        sortType[1].classList.remove(`new-color-${(classIndex+1)%3}`);
         sortType[1].classList.add(`new-color-${(classIndex)%3}`);
         todolist.classList.remove(`new-main-border-${(classIndex-1)%3}`);
+        todolist.classList.remove(`new-main-border-${(classIndex+1)%3}`);
         todolist.classList.add(`new-main-border-${(classIndex)%3}`);
     }
 
