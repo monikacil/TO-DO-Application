@@ -79,7 +79,6 @@ p.alertInfo {
       margin: 1rem 0;
       background-color: $gray-lighter-two;
       font-size: 1rem;
-      outline: 0;
       border-radius: 0;
       border: 0;
       &::placeholder {
@@ -87,7 +86,6 @@ p.alertInfo {
       }
       &:active, &:focus {
         background-color: $gray-lighter-one;
-        outline: 0.1rem solid $primary-color;
         color: white;
         border: none;
         box-shadow: none;
@@ -284,6 +282,22 @@ header {
 }
 .new-color-2{
   color: #3CBBF7;
+}
+
+.new-outline-color-0{
+  &:active, &:focus{
+    outline: 0.1rem solid $primary-color;
+  }
+}
+.new-outline-color-1{
+  &:active, &:focus{
+    outline: 0.1rem solid  #E74C3C;
+  }
+}
+.new-outline-color-2{
+  &:active, &:focus{
+    outline: 0.1rem solid #3CBBF7;
+  }
 }
 
 .new-bckg-0{

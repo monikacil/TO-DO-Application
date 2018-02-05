@@ -305,7 +305,11 @@ document.addEventListener('DOMContentLoaded', function () {
         var valueName = document.querySelectorAll(".valueName");
         var hr = document.querySelectorAll("hr");
         var colorButtons = document.querySelectorAll(".btn.mark");
+        var inputFocus = document.querySelectorAll("input");
+        var selectFocus = document.querySelectorAll("select");
 
+        changeElementsClass(selectFocus, 'new-outline-color', classIndex);
+        changeElementsClass(inputFocus, 'new-outline-color', classIndex);
         changeElementsClass(colorButtons, 'new-wave', classIndex);
         changeElementsClass(hr, 'new-bckg', classIndex);
         changeElementsClass(valueName, 'new-color', classIndex);
