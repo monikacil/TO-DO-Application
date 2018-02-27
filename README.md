@@ -1,19 +1,22 @@
-**TO DO Application**
+# TO DO Application
 
+Well known To Do List Application coded using clean JavaScript.
 
+## Funcionality
 
-This is a team project created by four girls with some help from our mentor.
+[The App](https://monikacil.github.io/TO-DO-Application/) allows to:
+- add and remove tasks, 
+- mark them "done",
+- filter them by:
+	- priority,
+	- deadline,
+	- done,
+	- to do;
+- storage tasks on a local storage until you decide to remove them,
+- change background and buttons styles;
 
+## Aim
 
+[The App](https://monikacil.github.io/TO-DO-Application/) was created by :four: girls to exercise team and remote work with cooperation of our :top: mentor @pozytron
 
-The aim was to create an application and exercise team and remote work.
-
-
-
-Out TO DO Application allows you to add and remove tasks, mark them "done", filter them. It also storage our tasks on a local storage untill you decide to remove them.
-
-
-
-You are able to set the task topic and description as well as its priority and deadline.
-
-[Check this out!](https://monikacil.github.io/TO-DO-Application/)
+[APP PREVIEW](https://monikacil.github.io/TO-DO-Application/)
