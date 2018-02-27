@@ -19,4 +19,14 @@ Well known To Do List Application coded using clean JavaScript.
 
 [The App](https://monikacil.github.io/TO-DO-Application/) was created by :four: girls to exercise team and remote work with cooperation of our :top: mentor @pozytron
 
+## Technologies used
+
+* JavaScript (ES5 standard)
+* CSS
+* HTML
+* Bootstrap
+* SASS
+* Gulp
+
+
 [APP PREVIEW](https://monikacil.github.io/TO-DO-Application/)
